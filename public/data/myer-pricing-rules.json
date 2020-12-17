@@ -1,0 +1,15 @@
+[
+  {
+    "id": "1",
+    "type": "xFORy",
+    "x": 5,
+    "y": 4,
+    "products": ["2"]
+  },
+  {
+    "id": "2",
+    "type": "discount",
+    "discountAmount": 5,
+    "products": ["3"]
+  }
+]

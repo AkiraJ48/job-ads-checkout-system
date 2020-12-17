@@ -1,0 +1,10 @@
+[
+  {
+    "id": "2",
+    "type": "discount",
+    "discountAmount": 23,
+    "products": [
+      "2"
+    ]
+  }
+]
