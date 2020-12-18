@@ -1,25 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { ReactElement } from 'react';
 import './App.css';
+
+import { Container, Input } from '@chakra-ui/react';
+
+function Card(props: { children: ReactElement }) {
+  const { children } = props;
+  return (
+    <Container
+      boxShadow="0 4px 8px 0 rgba(0,0,0,0.2);"
+      padding="8px"
+    >
+      {children}
+    </Container>
+  )
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container
+      width="1024px"
+      margin="auto"
+    >
+      <Card>
+        <Input />
+      </Card>    
+    </Container>
   );
 }
 
