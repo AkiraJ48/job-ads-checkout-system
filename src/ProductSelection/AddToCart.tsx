@@ -22,7 +22,7 @@ function AddToCart() {
   );
 
   const updateQuantities = (
-    <Flex>
+    <>
       <Button
         onClick={() => {
           const itemsAdded = itemsAddToCart - 1;
@@ -50,10 +50,16 @@ function AddToCart() {
       >
         +
       </Button>
-    </Flex>
+    </>
   )
 
-  return hasAddedToCart ? updateQuantities : addToCart;
+  return (
+    <Flex>
+      {
+        hasAddedToCart ? updateQuantities : addToCart
+      }
+    </Flex>
+  )
 }
 
 export default AddToCart;

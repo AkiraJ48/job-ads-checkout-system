@@ -6,8 +6,9 @@ import Product from './Product';
 /* 
   Assumptions: I think I should have the customer id if they've gotten this far
 */
-// Also write a test for the checkout button as it's probably pretty important
-function ProductSelection() {
+function ProductSelection(props: { onCheckout: () => void }) {
+  const { onCheckout } = props;
+
   return (
     <VStack spacing="24px">
       <Box width="100%" marginTop="12px">
@@ -38,7 +39,11 @@ function ProductSelection() {
         description="Same benefits as Standout Ad, but also puts the advertisement at the top of the results, allowing higher visibility"
         price="$394.99"
       />
-      <Button alignSelf="flex-end" colorScheme="green">
+      <Button 
+        alignSelf="flex-end" 
+        colorScheme="green" 
+        onClick={onCheckout}
+      >
         Checkout
       </Button>
     </VStack>
