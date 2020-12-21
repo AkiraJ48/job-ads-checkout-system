@@ -1,13 +1,8 @@
 import React from 'react';
 import { Button, Center, Flex } from '@chakra-ui/react';
+import { AddToCartProps } from './ComponentTypes';
 
-
-type AddToCartType = {
-  numberOfItemsSelected: number,
-  onUpdateCart: (value: number) => void
-}
-
-function AddToCart(props: AddToCartType) {
+function AddToCart(props: AddToCartProps) {
   const { numberOfItemsSelected, onUpdateCart } = props;
   const hasAddedToCart = numberOfItemsSelected > 0;
 

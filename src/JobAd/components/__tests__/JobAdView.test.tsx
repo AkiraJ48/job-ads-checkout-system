@@ -1,17 +1,11 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
-import JobAdView from '../JobAdView';
-import JobAd from '../../JobAd';
-import { SelectedJobAds } from '../../JobAdReducer';
 
-const renderJobAdView = (props: {
-  customer?: string,
-  jobAds?: JobAd[],
-  itemsInCart?: SelectedJobAds[],
-  onCheckout?: () => void,
-  onUpdateCustomer?: (customer: string) => void,
-  onUpdateCart?: (id: string, quantity: number) => void}
-) => {
+import JobAdView from '../JobAdView';
+import { JobAdViewProps } from '../ComponentTypes';
+
+type PartialJobAdViewProps = Partial<JobAdViewProps>
+const renderJobAdView = (props: PartialJobAdViewProps) => {
   const { 
     jobAds = [], 
     itemsInCart = [], 
@@ -104,7 +98,7 @@ describe('JobAdView', () => {
 
       const { getByText } = renderJobAdView({ jobAds, itemsInCart });
       const addQuantityButton = getByText(/\+/i);
-      const removeQuantityButton = getByText(/\-/i);
+      const removeQuantityButton = getByText(/-/i);
   
       expect(addQuantityButton).toBeInTheDocument();
       expect(removeQuantityButton).toBeInTheDocument();
@@ -122,7 +116,7 @@ describe('JobAdView', () => {
     test('clicking the remove quantity button triggers onUpdateCart', () => {
       const onUpdateCart = jest.fn();
       const { getByText } = renderJobAdView({ jobAds, onUpdateCart, itemsInCart });
-      const removeQuantityButton = getByText(/\-/i);
+      const removeQuantityButton = getByText(/-/i);
       fireEvent.click(removeQuantityButton);
 
       expect(onUpdateCart).toHaveBeenCalled();

@@ -2,17 +2,9 @@ import React from 'react';
 import { VStack, Box, Button, Heading, Select } from '@chakra-ui/react';
 
 import JobAdWidget from './JobAdWidget';
-import JobAd from '../JobAd';
-import { SelectedJobAds } from '../JobAdReducer';
+import { JobAdViewProps } from './ComponentTypes';
 
-function JobAdView(props: {
-  customer: string,
-  jobAds: JobAd[],
-  itemsInCart: SelectedJobAds[],
-  onCheckout: () => void,
-  onUpdateCustomer: (customer: string) => void,
-  onUpdateCart: (id: string, quantity: number) => void,
-}) {
+function JobAdView(props: JobAdViewProps) {
   const { 
     customer, 
     jobAds, 

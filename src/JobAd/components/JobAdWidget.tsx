@@ -3,14 +3,9 @@ import { Alert, AlertTitle, Box, Heading, Text } from '@chakra-ui/react';
 
 import Card from './Card';
 import AddToCart from './AddToCart';
-import JobAd from '../JobAd';
+import { JobAdWidgetProps } from './ComponentTypes';
 
-type JobAdWidgetType = JobAd & {
-  numberOfItemsSelected: number,
-  onUpdateCart: (value: number) => void
-}
-
-function JobAdWidget(props: JobAdWidgetType) {
+function JobAdWidget(props: JobAdWidgetProps) {
   const {
     title,
     description,

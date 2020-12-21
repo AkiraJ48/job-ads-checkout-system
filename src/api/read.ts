@@ -1,4 +1,4 @@
-import JobAd from '../JobAd/JobAd';
+import { JobAd } from '../JobAd/Types';
 import { ApiActions, ApiArguments, ApiResponse } from './Api';
 import loadCheckout from './stubs/loadCheckout';
 import loadJobAds from './stubs/loadJobAds';

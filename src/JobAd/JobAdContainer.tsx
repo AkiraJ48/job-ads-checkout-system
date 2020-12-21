@@ -1,8 +1,9 @@
 import React, { useEffect, useReducer, useState } from 'react';
 
+import { ActionType } from './Types';
 import { ApiActions } from '../api/Api';
 import read from '../api/read';
-import JobAdReducer, { ActionType, initialState } from './JobAdReducer';
+import JobAdReducer from './JobAdReducer';
 import { getItemsInCart, getJobAds } from './JobAdSelectors';
 import JobAdView from './components/JobAdView';
 
@@ -12,10 +13,13 @@ function JobAdContainer(props: { onCheckout: () => void }) {
   /* 
     Expectation is that we'd retrieve the customer from some user preferences and it'd be
     passed down to this component. You wouldn't have a dropdown for the customer value. I've added
-    this purely for visibility purposes of different customer pricing rules.
+    this purely for visibility purposes so that we can see different pricing rules for different customers.
   */
   const [customer, setCustomer] = useState('');
-  const [state, dispatch] = useReducer(JobAdReducer, initialState);
+  const [state, dispatch] = useReducer(JobAdReducer, {
+    jobAds: [],
+    selectedJobAds: [],
+  });
 
   useEffect(() => {
     async function load() {

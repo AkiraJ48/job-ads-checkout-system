@@ -1,4 +1,4 @@
-import JobAd from "../JobAd/JobAd";
+import { JobAd } from "../JobAd/Types";
 import Checkout, { LoadCheckoutApiArgs } from "./types/Checkout";
 import { LoadProductSelectionApiArgs } from "./types/Product";
 
