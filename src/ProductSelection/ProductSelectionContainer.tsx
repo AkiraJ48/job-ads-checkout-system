@@ -6,14 +6,17 @@ import ProductSelectionReducer, { ActionType, initialState } from './ProductSele
 import { getProductProps } from './ProductSelectionSelectors';
 import ProductSelection from './ProductSelection';
 
-function ProductSelectionContainer(props: { onCheckout: () => void }) {
-  const { onCheckout } = props;
+function ProductSelectionContainer(props: { onCheckout: () => void, customerId: string }) {
+  const { onCheckout, customerId } = props;
 
   const [state, dispatch] = useReducer(ProductSelectionReducer, initialState);
 
   useEffect(() => {
     async function load() {
-      const products = await read({ action: ApiActions.LOAD_PRODUCTS });
+      const products = await read({ 
+        action: ApiActions.LOAD_PRODUCT_SELECTIONS, 
+        context: { customerId } 
+      });
       dispatch({ type: ActionType.SET_INITIAL_STATE, products })
     }
 

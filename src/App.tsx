@@ -14,6 +14,7 @@ function App() {
     >
       <ProductSelectionContainer 
         onCheckout={() => {}}
+        customerId={'myer'}
       />
     </Container>
   );

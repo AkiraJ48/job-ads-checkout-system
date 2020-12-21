@@ -30,26 +30,11 @@ function ProductSelection(props: {
             title={product.title}
             description={product.description}
             price={product.price}
+            specialDeal={product.specialDeal}
+            containsSpecialDeal={product.containsSpecialDeal}
           />    
         ))
       }
-      {/* <Product
-        title="Classic Ad"
-        description="Offers the most basic level of advertisement"
-        price="$269.99"
-        specialDeal="You can buy 3 for 2!"
-        containsSpecialDeal
-      />
-      <Product
-        title="Stand out Ad"
-        description="Allows advertisers to use a company logo and use a longer presentation text"
-        price="$322.99"
-      />
-      <Product
-        title="Premium Ad"
-        description="Same benefits as Standout Ad, but also puts the advertisement at the top of the results, allowing higher visibility"
-        price="$394.99"
-      /> */}
       <Button
         alignSelf="flex-end" 
         colorScheme="green" 

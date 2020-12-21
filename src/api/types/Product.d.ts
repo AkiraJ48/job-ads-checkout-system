@@ -1,7 +1,9 @@
 import { ApiActions, ApiArgs } from "../Api";
+import { PricingRulesContext } from "./PricingRule";
 
-export type LoadProductsApiArgs = ApiArgs & {
-  action: ApiActions.LOAD_PRODUCTS,
+export type LoadProductSelectionApiArgs = ApiArgs & {
+  action: ApiActions.LOAD_PRODUCT_SELECTIONS,
+  context: PricingRulesContext,
 };
 
 type Product = {

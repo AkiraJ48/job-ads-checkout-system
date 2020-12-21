@@ -4,8 +4,8 @@ import myer from '../data/myer-pricing-rules.json';
 import { ApiActions } from '../Api';
 
 describe('read', () => {
-  test(`calling read with ${ApiActions[ApiActions.LOAD_PRODUCTS]} should return products`, async () => {
-    const response = await read({ action: ApiActions.LOAD_PRODUCTS });
+  test(`calling read with ${ApiActions[ApiActions.LOAD_PRODUCT_SELECTIONS]} should return products`, async () => {
+    const response = await read({ action: ApiActions.LOAD_PRODUCT_SELECTIONS });
 
     expect(response).toBeDefined();
     expect(response).toEqual(products);

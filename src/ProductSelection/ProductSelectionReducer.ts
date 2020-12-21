@@ -1,7 +1,7 @@
-import Product from "../api/types/Product"
+import ProductProps from "./ProductProps";
 
 export type ProductSelectionState = {
-  products: Product[]
+  products: ProductProps[]
 }
 
 export const initialState: ProductSelectionState = {
@@ -14,7 +14,7 @@ export enum ActionType {
 
 type SetInitialState = {
   type: ActionType.SET_INITIAL_STATE,
-  products: Product[],
+  products: ProductProps[],
 }
 
 type Actions = SetInitialState;
