@@ -40,7 +40,10 @@ function JobAdContainer(props: JobAdContainerProps) {
       customer={customer}
       jobAds={jobAds}
       itemsInCart={itemsInCart}
-      onCheckout={onCheckout}
+      onCheckout={() => onCheckout({ 
+        customerId: customer, 
+        selectedProducts: state.selectedJobAds 
+      })}
       onUpdateCustomer={setCustomer}
       onUpdateCart={(id: string, quantity: number) => dispatch({ 
         type: ActionType.UPDATE_CART, 

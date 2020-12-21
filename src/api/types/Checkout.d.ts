@@ -1,5 +1,4 @@
 import Product from "./Product";
-import PricingRule from "./PricingRule";
 import { ApiActions, ApiArgs } from "../Api";
 
 export type LoadCheckoutApiArgs = ApiArgs & {
@@ -7,14 +6,23 @@ export type LoadCheckoutApiArgs = ApiArgs & {
   context: CheckoutContext,
 }
 
+export type SelectedProduct = {
+  id: string,
+  quantity: number,
+};
+
 export type CheckoutContext = {
-  products: Product[],
+  selectedProducts: SelectedProduct[],
   customerId: string
 }
 
+export type CheckoutProduct = Product & {
+  discountedPrice?: number,
+  quantity: number,
+}
+
 type Checkout = {
-  products: Product[],
-  pricingRules: PricingRule[],
+  products: CheckoutProduct[],
   totalAmount: number,
 }
 

@@ -1,7 +1,8 @@
+import { CheckoutContext } from "../api/types/Checkout";
 import { LoadProductSelectionApiArgs } from "../api/types/Product";
 
 export type JobAdContainerProps = {
-  onCheckout: () => void,
+  onCheckout: (props: CheckoutContext) => void,
   read: (args: LoadProductSelectionApiArgs) => Promise<JobAd[]>
 }
 

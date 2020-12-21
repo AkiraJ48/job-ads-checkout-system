@@ -56,9 +56,7 @@ function JobAdView(props: JobAdViewProps) {
       <Button
         alignSelf="flex-end" 
         colorScheme="green" 
-        onClick={() => {
-          onCheckout()
-        }}
+        onClick={onCheckout}
       >
         Checkout
       </Button>
