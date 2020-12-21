@@ -5,13 +5,20 @@ import Card from './Card';
 import AddToCart from './AddToCart';
 import JobAd from '../JobAd';
 
-function JobAdWidget(props: JobAd) {
+type JobAdWidgetType = JobAd & {
+  numberOfItemsSelected: number,
+  onUpdateCart: (value: number) => void
+}
+
+function JobAdWidget(props: JobAdWidgetType) {
   const {
     title,
     description,
     price,
     specialDeal,
-    containsSpecialDeal = false
+    containsSpecialDeal = false,
+    numberOfItemsSelected,
+    onUpdateCart,
   } = props;
 
   const SpecialDeal = containsSpecialDeal && (
@@ -51,7 +58,7 @@ function JobAdWidget(props: JobAd) {
           { Title }
           { Description }
         </Box>
-        <AddToCart />
+        <AddToCart numberOfItemsSelected={numberOfItemsSelected} onUpdateCart={onUpdateCart} />
       </Box>
     </Card>
   )

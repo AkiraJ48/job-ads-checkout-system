@@ -3,14 +3,24 @@ import { VStack, Box, Button, Heading, Select } from '@chakra-ui/react';
 
 import JobAdWidget from './JobAdWidget';
 import JobAd from '../JobAd';
+import { SelectedJobAds } from '../JobAdReducer';
 
 function JobAdView(props: {
   customer: string,
   jobAds: JobAd[],
+  itemsInCart: SelectedJobAds[],
   onCheckout: () => void,
-  onUpdateCustomer: (customer: string) => void
+  onUpdateCustomer: (customer: string) => void,
+  onUpdateCart: (id: string, quantity: number) => void,
 }) {
-  const { customer, jobAds, onCheckout, onUpdateCustomer } = props;
+  const { 
+    customer, 
+    jobAds, 
+    itemsInCart, 
+    onCheckout, 
+    onUpdateCustomer, 
+    onUpdateCart
+  } = props;
 
   const customerDropdown = (
     <Box width="100%" marginTop="12px">
@@ -28,25 +38,35 @@ function JobAdView(props: {
     </Box>
   );
 
+  const jobAdWidgets = jobAds.map(jobAd => {
+    const itemsSelected = itemsInCart.find(item => item.id === jobAd.id);
+    const numberOfItemsSelected = itemsSelected ? itemsSelected.quantity : 0;
+
+    return ( 
+      <JobAdWidget
+        key={jobAd.id}
+        id={jobAd.id}
+        title={jobAd.title}
+        description={jobAd.description}
+        price={jobAd.price}
+        specialDeal={jobAd.specialDeal}
+        containsSpecialDeal={jobAd.containsSpecialDeal}
+        numberOfItemsSelected={numberOfItemsSelected}
+        onUpdateCart={(value: number) => onUpdateCart(jobAd.id, value)}
+      />
+    )}
+  )
+
   return (
     <VStack spacing="24px">
       {customerDropdown}
-      {
-        jobAds.map(jobAd => (
-          <JobAdWidget
-            key={jobAd.key}
-            title={jobAd.title}
-            description={jobAd.description}
-            price={jobAd.price}
-            specialDeal={jobAd.specialDeal}
-            containsSpecialDeal={jobAd.containsSpecialDeal}
-          />    
-        ))
-      }
+      {jobAdWidgets}
       <Button
         alignSelf="flex-end" 
         colorScheme="green" 
-        onClick={onCheckout}
+        onClick={() => {
+          onCheckout()
+        }}
       >
         Checkout
       </Button>

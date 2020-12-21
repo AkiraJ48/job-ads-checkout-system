@@ -24,7 +24,7 @@ describe('buildJobAds', () => {
 
     expect(jobAds).toEqual([
       {
-        key: '1',
+        id: '1',
         title: 'Myer',
         description: 'description',
         price: 123,
@@ -57,7 +57,7 @@ describe('buildJobAds', () => {
 
     expect(jobAds).toEqual([
       {
-        key: '1',
+        id: '1',
         title: 'Myer',
         description: 'description',
         price: 123,
@@ -103,7 +103,7 @@ describe('buildJobAds', () => {
 
     expect(jobAds).toEqual([
       {
-        key: '1',
+        id: '1',
         title: 'Myer',
         description: 'description',
         price: 123,
@@ -111,7 +111,7 @@ describe('buildJobAds', () => {
         specialDeal: "You get $5 off!",
       },
       {
-        key: '2',
+        id: '2',
         title: 'Axil',
         description: 'description',
         price: 251,

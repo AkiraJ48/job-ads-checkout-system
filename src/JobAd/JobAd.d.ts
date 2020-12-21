@@ -1,5 +1,5 @@
 type JobAd = {
-  key: string,
+  id: string,
   title: string,
   description: string,
   price: number,

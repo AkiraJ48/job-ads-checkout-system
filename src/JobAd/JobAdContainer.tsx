@@ -3,7 +3,7 @@ import React, { useEffect, useReducer, useState } from 'react';
 import { ApiActions } from '../api/Api';
 import read from '../api/read';
 import JobAdReducer, { ActionType, initialState } from './JobAdReducer';
-import { getJobAds } from './JobAdSelectors';
+import { getItemsInCart, getJobAds } from './JobAdSelectors';
 import JobAdView from './components/JobAdView';
 
 function JobAdContainer(props: { onCheckout: () => void }) {
@@ -30,13 +30,20 @@ function JobAdContainer(props: { onCheckout: () => void }) {
   }, [customer])
 
   const jobAds = getJobAds(state);
+  const itemsInCart = getItemsInCart(state);
 
   return (
     <JobAdView
       customer={customer}
       jobAds={jobAds}
+      itemsInCart={itemsInCart}
       onCheckout={onCheckout}
       onUpdateCustomer={setCustomer}
+      onUpdateCart={(id: string, quantity: number) => dispatch({ 
+        type: ActionType.UPDATE_CART, 
+        id, 
+        quantity
+      })}
     />
   );
 }

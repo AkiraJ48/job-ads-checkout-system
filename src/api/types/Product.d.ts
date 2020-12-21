@@ -13,6 +13,4 @@ type Product = {
   price: number
 };
 
-export type ProductId = Pick<Product, "id">;
-
 export default Product;

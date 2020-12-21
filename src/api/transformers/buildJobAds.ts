@@ -16,7 +16,7 @@ function buildJobAds(products: Product[], pricingRules: PricingRule[]) {
     const specialDeal = rulesRelatedToProduct ? buildSpecialDealDescription(rulesRelatedToProduct) : '';
 
     return {
-      key: product.id,
+      id: product.id,
       title: product.name,
       description: product.description,
       price: product.price,

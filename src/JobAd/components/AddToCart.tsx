@@ -1,18 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, Center, Flex } from '@chakra-ui/react';
 
+
+type AddToCartType = {
+  numberOfItemsSelected: number,
+  onUpdateCart: (value: number) => void
+}
 // Unit test this
 // Expectation is that I should have a single element with no items
 // Then I should have 3 elements if there are items
-function AddToCart() {
-  const [itemsAddToCart, setItemsAddedToCart] = useState(0);
-  const hasAddedToCart = itemsAddToCart > 0;
+function AddToCart(props: AddToCartType) {
+  const { numberOfItemsSelected, onUpdateCart } = props;
+  const hasAddedToCart = numberOfItemsSelected > 0;
 
   const addToCart = (
     <Button
       onClick={() => {
-        const itemsAdded = itemsAddToCart + 1;
-        setItemsAddedToCart(itemsAdded);
+        const itemsAdded = numberOfItemsSelected + 1;
+        onUpdateCart(itemsAdded);
       }}
       colorScheme="blue"
       width="154.5px"
@@ -25,8 +30,8 @@ function AddToCart() {
     <>
       <Button
         onClick={() => {
-          const itemsAdded = itemsAddToCart - 1;
-          setItemsAddedToCart(itemsAdded);
+          const itemsAdded = numberOfItemsSelected - 1;
+          onUpdateCart(itemsAdded);
         }}
         colorScheme="blue"
         borderRadius="0.375rem 0 0 0.375rem"
@@ -38,12 +43,12 @@ function AddToCart() {
         width="72px"
         background="lightblue"
       >
-        {itemsAddToCart}
+        {numberOfItemsSelected}
       </Center>
       <Button
         onClick={() => {
-          const itemsAdded = itemsAddToCart + 1;
-          setItemsAddedToCart(itemsAdded);
+          const itemsAdded = numberOfItemsSelected + 1;
+          onUpdateCart(itemsAdded);
         }}
         colorScheme="blue"
         borderRadius="0 0.375rem 0.375rem 0"
