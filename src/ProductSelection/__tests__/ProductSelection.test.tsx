@@ -3,9 +3,9 @@ import { fireEvent, render } from '@testing-library/react';
 import ProductSelection from '../ProductSelection';
 
 describe('ProductSelection', () => {
-  test('renders the checkout button', () => {
+  test('renders the checkout button', async () => {
     const onCheckout = () => {};
-    const { getByText } = render(<ProductSelection onCheckout={onCheckout} />);
+    const { getByText } = render(<ProductSelection products={[]} onCheckout={onCheckout} />);
     const checkoutButton = getByText(/Checkout/i);
 
     expect(checkoutButton).toBeInTheDocument();
@@ -13,7 +13,7 @@ describe('ProductSelection', () => {
 
   test('clicking the checkout button triggers onCheckout', () => {
     const onCheckout = jest.fn();
-    const { getByText } = render(<ProductSelection onCheckout={onCheckout} />);
+    const { getByText } = render(<ProductSelection products={[]} onCheckout={onCheckout} />);
     const checkoutButton = getByText(/Checkout/i);
     fireEvent.click(checkoutButton);
 

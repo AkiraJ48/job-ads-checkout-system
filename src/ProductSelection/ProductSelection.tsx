@@ -2,12 +2,13 @@ import React from 'react';
 import { VStack, Box, Button, Heading, Select } from '@chakra-ui/react';
 
 import Product from './Product';
+import ProductProps from './ProductProps';
 
-/* 
-  Assumptions: I think I should have the customer id if they've gotten this far
-*/
-function ProductSelection(props: { onCheckout: () => void }) {
-  const { onCheckout } = props;
+function ProductSelection(props: {
+  products: ProductProps[],
+  onCheckout: () => void 
+}) {
+  const { products, onCheckout } = props;
 
   return (
     <VStack spacing="24px">
@@ -22,7 +23,17 @@ function ProductSelection(props: { onCheckout: () => void }) {
           <option value="Axil Coffee">Axil Coffee</option>
         </Select>
       </Box>
-      <Product
+      {
+        products.map(product => (
+          <Product
+            key={product.key}
+            title={product.title}
+            description={product.description}
+            price={product.price}
+          />    
+        ))
+      }
+      {/* <Product
         title="Classic Ad"
         description="Offers the most basic level of advertisement"
         price="$269.99"
@@ -38,8 +49,8 @@ function ProductSelection(props: { onCheckout: () => void }) {
         title="Premium Ad"
         description="Same benefits as Standout Ad, but also puts the advertisement at the top of the results, allowing higher visibility"
         price="$394.99"
-      />
-      <Button 
+      /> */}
+      <Button
         alignSelf="flex-end" 
         colorScheme="green" 
         onClick={onCheckout}

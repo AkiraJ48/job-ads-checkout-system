@@ -12,7 +12,9 @@ function App() {
       width={width}
       margin="auto"
     >
-      <ProductSelection onCheckout={() => {}} />
+      <ProductSelectionContainer 
+        onCheckout={() => {}}
+      />
     </Container>
   );
 }

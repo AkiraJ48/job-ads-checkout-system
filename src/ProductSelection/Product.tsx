@@ -3,14 +3,7 @@ import { Alert, AlertTitle, Box, Heading, Text } from '@chakra-ui/react';
 
 import Card from './Card';
 import AddToCart from './AddToCart';
-
-type ProductProps = {
-  title: string,
-  description: string,
-  price: string,
-  containsSpecialDeal?: boolean,
-  specialDeal?: string
-}
+import ProductProps from './ProductProps';
 
 function Product(props: ProductProps) {
   const {
@@ -51,7 +44,7 @@ function Product(props: ProductProps) {
   );
 
   return (
-    <Card height="232px" >
+    <Card height="232px">
       <Box display="grid" height="100%" alignContent="space-between">
         <Box>
           { SpecialDeal }
