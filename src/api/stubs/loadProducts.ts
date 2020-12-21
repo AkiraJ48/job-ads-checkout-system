@@ -1,5 +1,5 @@
 async function loadProducts() {
-  const response = await import('../data/products.json');
+  const response = (await import('../data/products.json')).default;
   return response;
 }
 
