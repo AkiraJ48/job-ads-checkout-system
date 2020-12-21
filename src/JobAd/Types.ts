@@ -1,3 +1,10 @@
+import { LoadProductSelectionApiArgs } from "../api/types/Product";
+
+export type JobAdContainerProps = {
+  onCheckout: () => void,
+  read: (args: LoadProductSelectionApiArgs) => Promise<JobAd[]>
+}
+
 export type JobAd = {
   id: string,
   title: string,

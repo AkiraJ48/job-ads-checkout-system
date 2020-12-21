@@ -1,14 +1,13 @@
 import React, { useEffect, useReducer, useState } from 'react';
 
-import { ActionType } from './Types';
+import { ActionType, JobAdContainerProps } from './Types';
 import { ApiActions } from '../api/Api';
-import read from '../api/read';
 import JobAdReducer from './JobAdReducer';
 import { getItemsInCart, getJobAds } from './JobAdSelectors';
 import JobAdView from './components/JobAdView';
 
-function JobAdContainer(props: { onCheckout: () => void }) {
-  const { onCheckout } = props;
+function JobAdContainer(props: JobAdContainerProps) {
+  const { read, onCheckout } = props;
 
   /* 
     Expectation is that we'd retrieve the customer from some user preferences and it'd be
@@ -31,7 +30,7 @@ function JobAdContainer(props: { onCheckout: () => void }) {
     }
 
     load();
-  }, [customer])
+  }, [read, customer])
 
   const jobAds = getJobAds(state);
   const itemsInCart = getItemsInCart(state);

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, useMediaQuery } from '@chakra-ui/react';
 
+import read from './api/read';
 import JobAdContainer from './JobAd/JobAdContainer';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       margin="auto"
     >
       <JobAdContainer
+        read={read}
         onCheckout={() => {}}
       />
     </Container>
