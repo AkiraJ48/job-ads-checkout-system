@@ -1,4 +1,4 @@
-type ProductProps = {
+type JobAd = {
   key: string,
   title: string,
   description: string,
@@ -7,4 +7,4 @@ type ProductProps = {
   specialDeal?: string
 }
 
-export default ProductProps;
+export default JobAd;

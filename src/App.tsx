@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, useMediaQuery } from '@chakra-ui/react';
 
-import ProductSelection from './ProductSelection/ProductSelection';
+import JobAdContainer from './JobAd/JobAdContainer';
 
 function App() {
   const [isLargerThan768] = useMediaQuery("(min-width: 768px)")
@@ -12,7 +12,7 @@ function App() {
       width={width}
       margin="auto"
     >
-      <ProductSelectionContainer 
+      <JobAdContainer
         onCheckout={() => {}}
       />
     </Container>

@@ -5,9 +5,9 @@ import myer from '../data/myer-pricing-rules.json';
 import buildJobAds from '../transformers/buildJobAds';
 
 describe('read', () => {
-  test(`calling read with ${ApiActions[ApiActions.LOAD_PRODUCT_SELECTIONS]} should return products`, async () => {
+  test(`calling read with ${ApiActions[ApiActions.LOAD_JOB_ADS]} should return products`, async () => {
     const response = await read({ 
-      action: ApiActions.LOAD_PRODUCT_SELECTIONS, 
+      action: ApiActions.LOAD_JOB_ADS, 
       context: { customerId: 'Myer'} 
     });
 

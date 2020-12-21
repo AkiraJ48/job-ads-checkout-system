@@ -1,9 +1,9 @@
-import ProductProps from "../ProductSelection/components/ProductProps";
+import JobAd from "../JobAd/JobAd";
 import Checkout, { LoadCheckoutApiArgs } from "./types/Checkout";
 import { LoadProductSelectionApiArgs } from "./types/Product";
 
 export enum ApiActions {
-  LOAD_PRODUCT_SELECTIONS,
+  LOAD_JOB_ADS,
   LOAD_CHECKOUT,
 };
 
@@ -12,4 +12,4 @@ export type ApiArgs = {
 }
 
 export type ApiArguments = LoadProductSelectionApiArgs | LoadCheckoutApiArgs;
-export type ApiResponse = ProductProps[] | Checkout;
+export type ApiResponse = JobAd[] | Checkout;

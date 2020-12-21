@@ -1,13 +1,13 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
-import ProductSelection from '../ProductSelection';
+import JobAdView from '../JobAdView';
 
-describe('ProductSelection', () => {
+describe('JobAdView', () => {
   test('renders the checkout button', async () => {
     const onCheckout = () => {};
     const { getByText } = render(
-      <ProductSelection
-        products={[]}
+      <JobAdView
+        jobAds={[]}
         onCheckout={onCheckout}
         customer={''}
         onUpdateCustomer={() => { }}
@@ -21,8 +21,8 @@ describe('ProductSelection', () => {
   test('clicking the checkout button triggers onCheckout', () => {
     const onCheckout = jest.fn();
     const { getByText } = render(
-      <ProductSelection 
-        products={[]} 
+      <JobAdView 
+        jobAds={[]} 
         onCheckout={onCheckout} 
         customer={''}
         onUpdateCustomer={() => {}}

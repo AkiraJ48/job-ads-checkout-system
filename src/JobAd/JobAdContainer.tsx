@@ -2,11 +2,11 @@ import React, { useEffect, useReducer, useState } from 'react';
 
 import { ApiActions } from '../api/Api';
 import read from '../api/read';
-import ProductSelectionReducer, { ActionType, initialState } from './ProductSelectionReducer';
-import { getProductProps } from './ProductSelectionSelectors';
-import ProductSelection from './components/ProductSelection';
+import JobAdReducer, { ActionType, initialState } from './JobAdReducer';
+import { getJobAds } from './JobAdSelectors';
+import JobAdView from './components/JobAdView';
 
-function ProductSelectionContainer(props: { onCheckout: () => void }) {
+function JobAdContainer(props: { onCheckout: () => void }) {
   const { onCheckout } = props;
 
   /* 
@@ -15,30 +15,30 @@ function ProductSelectionContainer(props: { onCheckout: () => void }) {
     this purely for visibility purposes of different customer pricing rules.
   */
   const [customer, setCustomer] = useState('');
-  const [state, dispatch] = useReducer(ProductSelectionReducer, initialState);
+  const [state, dispatch] = useReducer(JobAdReducer, initialState);
 
   useEffect(() => {
     async function load() {
-      const products = await read({ 
-        action: ApiActions.LOAD_PRODUCT_SELECTIONS,
+      const ads = await read({ 
+        action: ApiActions.LOAD_JOB_ADS,
         context: { customerId: customer } 
       });
-      dispatch({ type: ActionType.SET_INITIAL_STATE, products })
+      dispatch({ type: ActionType.SET_INITIAL_STATE, ads })
     }
 
     load();
   }, [customer])
 
-  const products = getProductProps(state);
+  const jobAds = getJobAds(state);
 
   return (
-    <ProductSelection
+    <JobAdView
       customer={customer}
-      products={products}
+      jobAds={jobAds}
       onCheckout={onCheckout}
       onUpdateCustomer={setCustomer}
     />
   );
 }
 
-export default ProductSelectionContainer;
+export default JobAdContainer;

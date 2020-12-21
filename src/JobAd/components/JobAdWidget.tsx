@@ -3,9 +3,9 @@ import { Alert, AlertTitle, Box, Heading, Text } from '@chakra-ui/react';
 
 import Card from './Card';
 import AddToCart from './AddToCart';
-import ProductProps from './ProductProps';
+import JobAd from '../JobAd';
 
-function Product(props: ProductProps) {
+function JobAdWidget(props: JobAd) {
   const {
     title,
     description,
@@ -57,4 +57,4 @@ function Product(props: ProductProps) {
   )
 }
 
-export default Product;
+export default JobAdWidget;
