@@ -6,9 +6,7 @@ type AddToCartType = {
   numberOfItemsSelected: number,
   onUpdateCart: (value: number) => void
 }
-// Unit test this
-// Expectation is that I should have a single element with no items
-// Then I should have 3 elements if there are items
+
 function AddToCart(props: AddToCartType) {
   const { numberOfItemsSelected, onUpdateCart } = props;
   const hasAddedToCart = numberOfItemsSelected > 0;
@@ -60,9 +58,7 @@ function AddToCart(props: AddToCartType) {
 
   return (
     <Flex>
-      {
-        hasAddedToCart ? updateQuantities : addToCart
-      }
+      { hasAddedToCart ? updateQuantities : addToCart }
     </Flex>
   )
 }
