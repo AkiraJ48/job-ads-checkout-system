@@ -1,4 +1,4 @@
-import ProductProps from "./ProductProps";
+import ProductProps from "./components/ProductProps";
 
 export type ProductSelectionState = {
   products: ProductProps[]

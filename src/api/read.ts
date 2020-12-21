@@ -1,4 +1,4 @@
-import ProductProps from '../ProductSelection/ProductProps';
+import ProductProps from '../ProductSelection/components/ProductProps';
 import { ApiActions, ApiArguments, ApiResponse } from './Api';
 import loadCheckout from './stubs/loadCheckout';
 import loadProductSelections from './stubs/loadProductSelections';

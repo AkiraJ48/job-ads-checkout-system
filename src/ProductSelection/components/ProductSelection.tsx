@@ -5,10 +5,12 @@ import Product from './Product';
 import ProductProps from './ProductProps';
 
 function ProductSelection(props: {
+  customer: string,
   products: ProductProps[],
-  onCheckout: () => void 
+  onCheckout: () => void,
+  onUpdateCustomer: (customer: string) => void
 }) {
-  const { products, onCheckout } = props;
+  const { customer, products, onCheckout, onUpdateCustomer } = props;
 
   return (
     <VStack spacing="24px">
@@ -16,8 +18,10 @@ function ProductSelection(props: {
         <Heading as="h3" size="md">
           Customer:
         </Heading>
-        <Select>
-          <option value="Default">Default</option>
+        <Select value={customer} onChange={(event) => { 
+          onUpdateCustomer(event.target.value);
+        }}>
+          <option value="">Default</option>
           <option value="Myer">Myer</option>
           <option value="Second Bite">Second Bite</option>
           <option value="Axil Coffee">Axil Coffee</option>

@@ -1,4 +1,4 @@
-import ProductProps from "../ProductSelection/ProductProps";
+import ProductProps from "../ProductSelection/components/ProductProps";
 import Checkout, { LoadCheckoutApiArgs } from "./types/Checkout";
 import { LoadProductSelectionApiArgs } from "./types/Product";
 
