@@ -1,4 +1,4 @@
-export type PricingRulesContext = {
+export type DiscountRuleContext = {
   customerId: string
 }
 

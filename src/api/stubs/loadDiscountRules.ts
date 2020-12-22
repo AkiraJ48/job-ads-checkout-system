@@ -1,10 +1,10 @@
-import DiscountRule, { DiscountRuleType, PricingRulesContext } from '../types/DiscountRule';
+import DiscountRule, { DiscountRuleType, DiscountRuleContext } from '../types/DiscountRule';
 
 type ApiDiscountRule = Omit<DiscountRule, "type"> & {
   type: string,
 }
 
-async function loadPricingRules(props: PricingRulesContext): Promise<DiscountRule[]> {
+async function loadDiscountRules(props: DiscountRuleContext): Promise<DiscountRule[]> {
   const { customerId } = props;
   let response: ApiDiscountRule[];
   if (customerId === 'Myer') {
@@ -24,4 +24,4 @@ async function loadPricingRules(props: PricingRulesContext): Promise<DiscountRul
   return rules;
 }
 
-export default loadPricingRules;
+export default loadDiscountRules;

@@ -27,7 +27,7 @@ describe('JobAdReducer', () => {
     })
   })
 
-  describe(`${ActionType[ActionType.SET_INITIAL_STATE]}`, () => { 
+  describe(`${ActionType[ActionType.UPDATE_CART]}`, () => { 
     test('should update the cart with a selected product', () => {
       const state = {
         jobAds: [
