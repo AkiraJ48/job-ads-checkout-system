@@ -16,6 +16,8 @@ function JobAdReducer(state: JobAdState, action: Action) {
     }
   } else if (isUpdateCart(action)) {
     const itemExistsInCart = state.selectedJobAds.find(ad => ad.id === action.id);
+    
+    // Add new item
     if (!itemExistsInCart) {
       return {
         ...state,
@@ -29,6 +31,15 @@ function JobAdReducer(state: JobAdState, action: Action) {
       }
     }
 
+    // Remove item
+    if (action.quantity === 0) {
+      return {
+        ...state,
+        selectedJobAds: state.selectedJobAds.filter(selectedAd => selectedAd.id !== action.id)
+      }
+    }
+
+    // Update existing item
     return {
       ...state,
       selectedJobAds: state.selectedJobAds.map((selectedAd) => {

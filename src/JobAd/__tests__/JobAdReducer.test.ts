@@ -56,6 +56,35 @@ describe('JobAdReducer', () => {
         }
       ]);
     })
+
+    test('should remove the product from the cart when decremented', () => {
+      const state = {
+        jobAds: [
+          {
+            id: '1',
+            title: '',
+            description: '',
+            price: 1,
+          }
+        ],
+        selectedJobAds: [
+          {
+            id: '1',
+            quantity: 1
+          }
+        ],
+      }
+
+      const action: UpdateCart = {
+        type: ActionType.UPDATE_CART,
+        id: '1',
+        quantity: 0,
+      };
+
+      const updatedState = JobAdReducer(state, action);
+
+      expect(updatedState.selectedJobAds).toEqual([]);
+    })
   
     test('should update the cart with a selected product that already exists', () => {
       const state = {
