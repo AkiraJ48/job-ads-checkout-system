@@ -1,6 +1,6 @@
 import Checkout, { CheckoutContext, LoadCheckoutApiArgs } from '../api/types/Checkout';
 
-export type CheckoutContainerProps = {
+export type CheckoutServiceProps = {
   read: (args: LoadCheckoutApiArgs) => Promise<Checkout>
   context: CheckoutContext,
 }

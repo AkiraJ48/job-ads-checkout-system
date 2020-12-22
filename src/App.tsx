@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Container, useMediaQuery } from '@chakra-ui/react';
 
 import read from './api/read';
-import JobAdContainer from './JobAd/JobAdContainer';
-import CheckoutContainer from './Checkout/CheckoutContainer';
+import JobAdService from './JobAd/JobAdService';
+import CheckoutService from './Checkout/CheckoutService';
 import { CheckoutContext } from './api/types/Checkout';
 
 enum Pages {
@@ -18,7 +18,7 @@ function App() {
   const width = isLargerThan768 ? "768px" : "";
   
   const currentView = page === Pages.JOB_ADS ? (
-    <JobAdContainer
+    <JobAdService
       read={read}
       onCheckout={(props: CheckoutContext) => {
         setCheckoutContext(props);
@@ -26,7 +26,7 @@ function App() {
       }}
     />
   ) : (
-    <CheckoutContainer 
+    <CheckoutService 
       read={read}
       context={checkoutContext}
     />

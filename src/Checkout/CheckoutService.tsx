@@ -2,14 +2,12 @@ import React, { useEffect, useState } from 'react';
 import CheckoutView from './CheckoutView';
 
 import { ApiActions } from '../api/Api';
-import { CheckoutContainerProps } from './Types';
+import { CheckoutServiceProps } from './Types';
 import Checkout from '../api/types/Checkout';
 
-function CheckoutContainer(props: CheckoutContainerProps) {
+function CheckoutService(props: CheckoutServiceProps) {
   const { read, context } = props;
   const [cart, setCart] = useState({ totalAmount: 0, products: [] } as Checkout);
-
-  console.log(cart);
 
   useEffect(() => {
     async function load() {
@@ -29,4 +27,4 @@ function CheckoutContainer(props: CheckoutContainerProps) {
   );
 }
 
-export default CheckoutContainer;
+export default CheckoutService;

@@ -1,12 +1,12 @@
 import React, { useEffect, useReducer, useState } from 'react';
 
-import { ActionType, JobAdContainerProps } from './Types';
+import { ActionType, JobAdServiceProps } from './Types';
 import { ApiActions } from '../api/Api';
 import JobAdReducer from './JobAdReducer';
 import { getItemsInCart, getJobAds } from './JobAdSelectors';
 import JobAdView from './components/JobAdView';
 
-function JobAdContainer(props: JobAdContainerProps) {
+function JobAdService(props: JobAdServiceProps) {
   const { read, onCheckout } = props;
 
   /* 
@@ -54,4 +54,4 @@ function JobAdContainer(props: JobAdContainerProps) {
   );
 }
 
-export default JobAdContainer;
+export default JobAdService;
