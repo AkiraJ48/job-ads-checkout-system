@@ -316,4 +316,213 @@ describe('buildCheckoutCart', () => {
       })
     })
   })
+
+  describe('user scenarios', () => {
+    const products = [
+      {
+        id: "1",
+        name: "classic",
+        description: "Offers the most basic level of advertisement",
+        price: 269.99
+      },
+      {
+        id: "2",
+        name: "standout",
+        description: "Allows advertisers to use a company logo and use a longer presentation text",
+        price: 322.99
+      },
+      {
+        id: "3",
+        name: "premium",
+        description: "Same benefits as Standout Ad, but also puts the advertisement at the top of the results, allowing higher visibility",
+        price: 394.99
+      }
+    ]
+
+    test('default customer buying products', () => {
+      const discountRules: DiscountRule[] = [];
+      const selectedProducts = [
+        {
+          id: '1',
+          quantity: 1
+        },
+        {
+          id: '2',
+          quantity: 1
+        },
+        {
+          id: '3',
+          quantity: 1
+        }
+      ]
+      const cart = buildCheckoutCart(products, discountRules, selectedProducts);
+
+      expect(cart).toEqual({
+        products: [
+          {
+            id: products[0].id,
+            name: products[0].name,
+            description: products[0].description,
+            price: products[0].price,
+            quantity: 1,
+          },
+          {
+            id: products[1].id,
+            name: products[1].name,
+            description: products[1].description,
+            price: products[1].price,
+            quantity: 1,
+          },
+          {
+            id: products[2].id,
+            name: products[2].name,
+            description: products[2].description,
+            price: products[2].price,
+            quantity: 1,
+          }
+        ],
+        totalAmount: 987.97
+      })
+    })
+
+    test('second bite', () => {
+      const discountRules: DiscountRule[] = [
+        {
+          id: '1',
+          type: DiscountRuleType.X_FOR_Y,
+          products: ['1'],
+          x: 3,
+          y: 2,
+        }
+      ];
+      const selectedProducts = [
+        {
+          id: '1',
+          quantity: 3
+        },
+        {
+          id: '3',
+          quantity: 1
+        }
+      ]
+      const cart = buildCheckoutCart(products, discountRules, selectedProducts);
+
+      expect(cart).toEqual({
+        products: [
+          {
+            id: products[0].id,
+            name: products[0].name,
+            description: products[0].description,
+            price: products[0].price,
+            quantity: 3,
+            total: 539.98,
+          },
+          {
+            id: products[2].id,
+            name: products[2].name,
+            description: products[2].description,
+            price: products[2].price,
+            quantity: 1,
+          }
+        ],
+        totalAmount: 934.97
+      })
+    })
+
+    test('axil coffee roasters', () => {
+      const discountRules: DiscountRule[] = [
+        {
+          id: '1',
+          type: DiscountRuleType.DISCOUNT,
+          products: ['2'],
+          discountAmount: 23,
+        }
+      ];
+      const selectedProducts = [
+        {
+          id: '2',
+          quantity: 3
+        },
+        {
+          id: '3',
+          quantity: 1
+        }
+      ]
+      const cart = buildCheckoutCart(products, discountRules, selectedProducts);
+
+      expect(cart).toEqual({
+        products: [
+          {
+            id: products[1].id,
+            name: products[1].name,
+            description: products[1].description,
+            price: products[1].price,
+            quantity: 3,
+            discountedPrice: 299.99,
+
+          },
+          {
+            id: products[2].id,
+            name: products[2].name,
+            description: products[2].description,
+            price: products[2].price,
+            quantity: 1,
+          }
+        ],
+        totalAmount: 1294.96
+      })
+    })
+
+    test('myers', () => {
+      const discountRules: DiscountRule[] = [
+        {
+          id: '1',
+          type: DiscountRuleType.DISCOUNT,
+          products: ['3'],
+          discountAmount: 5,
+        },
+        {
+          id: '2',
+          type: DiscountRuleType.X_FOR_Y,
+          products: ['2'],
+          x: 5,
+          y: 4
+        }
+      ];
+      const selectedProducts = [
+        {
+          id: '2',
+          quantity: 6
+        },
+        {
+          id: '3',
+          quantity: 1
+        }
+      ]
+      const cart = buildCheckoutCart(products, discountRules, selectedProducts);
+
+      expect(cart).toEqual({
+        products: [
+          {
+            id: products[1].id,
+            name: products[1].name,
+            description: products[1].description,
+            price: products[1].price,
+            quantity: 6,
+            total: 1614.95,
+
+          },
+          {
+            id: products[2].id,
+            name: products[2].name,
+            description: products[2].description,
+            price: products[2].price,
+            quantity: 1,
+            discountedPrice: 389.99
+          }
+        ],
+        totalAmount: 2004.94
+      })
+    })
+  })
 })
