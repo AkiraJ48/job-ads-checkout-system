@@ -1,32 +1,29 @@
 import read from '../read';
 import { ApiActions } from '../Api';
-import products from '../data/products.json';
-import myer from '../data/myer-pricing-rules.json';
-import buildJobAds from '../transformers/buildJobAds';
+import { JobAd } from '../../JobAd/Types';
+import Checkout from '../types/Checkout';
 
 describe('read', () => {
-  test(`calling read with ${ApiActions[ApiActions.LOAD_JOB_ADS]} should return products`, async () => {
+  test(`calling read with ${ApiActions[ApiActions.LOAD_JOB_ADS]} should return job ads`, async () => {
     const response = await read({ 
       action: ApiActions.LOAD_JOB_ADS, 
       context: { customerId: 'Myer'} 
     });
 
-    const jobAds = buildJobAds(products, myer);
-
     expect(response).toBeDefined();
-    expect(response).toEqual(jobAds);
+    expect(response as JobAd[]).toBeTruthy();
   })
 
   test(`calling read with ${ApiActions[ApiActions.LOAD_CHECKOUT]} should return checkout`, async () => {
     const response = await read({
       action: ApiActions.LOAD_CHECKOUT,
       context: {
-        products: [],
+        selectedProducts: [],
         customerId: '',
       }
     });
 
     expect(response).toBeDefined();
-    expect(response).toEqual(myer);
+    expect(response as Checkout).toBeTruthy();
   })
 })

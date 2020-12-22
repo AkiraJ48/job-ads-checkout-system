@@ -8,6 +8,8 @@ function CheckoutContainer(props: CheckoutContainerProps) {
   const { read, context } = props;
   const [cart, setCart] = useState({});
 
+  console.log(cart);
+
   useEffect(() => {
     async function load() {
       const checkoutCart = await read({
@@ -22,7 +24,7 @@ function CheckoutContainer(props: CheckoutContainerProps) {
   }, [read, context])
 
   return (
-    <CheckoutView></CheckoutView>
+    <CheckoutView />
   );
 }
 
