@@ -1,7 +1,7 @@
 import React from 'react';
 import { Alert, AlertTitle, Box, Heading, Text } from '@chakra-ui/react';
 
-import Card from './Card';
+import Card from '../../components/Card';
 import AddToCart from './AddToCart';
 import { JobAdWidgetProps } from './ComponentTypes';
 

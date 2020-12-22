@@ -3,10 +3,11 @@ import CheckoutView from './CheckoutView';
 
 import { ApiActions } from '../api/Api';
 import { CheckoutContainerProps } from './Types';
+import Checkout from '../api/types/Checkout';
 
 function CheckoutContainer(props: CheckoutContainerProps) {
   const { read, context } = props;
-  const [cart, setCart] = useState({});
+  const [cart, setCart] = useState({ totalAmount: 0, products: [] } as Checkout);
 
   console.log(cart);
 
@@ -24,7 +25,7 @@ function CheckoutContainer(props: CheckoutContainerProps) {
   }, [read, context])
 
   return (
-    <CheckoutView />
+    <CheckoutView cart={cart} />
   );
 }
 

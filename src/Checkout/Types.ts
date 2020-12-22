@@ -4,3 +4,7 @@ export type CheckoutContainerProps = {
   read: (args: LoadCheckoutApiArgs) => Promise<Checkout>
   context: CheckoutContext,
 }
+
+export type CheckoutViewProps = {
+  cart: Checkout
+}
