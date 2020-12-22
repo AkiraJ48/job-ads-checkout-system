@@ -5,8 +5,8 @@ import buildCheckoutCart from '../transformers/buildCheckoutCart';
 
 async function loadCheckout(props: CheckoutContext) {
   const { customerId, selectedProducts } = props;
-  const [products, pricingRules] = await Promise.all([loadProducts(), loadPricingRules({ customerId })]);
-  const checkoutCart = buildCheckoutCart(products, pricingRules, selectedProducts);
+  const [products, discountRules] = await Promise.all([loadProducts(), loadPricingRules({ customerId })]);
+  const checkoutCart = buildCheckoutCart(products, discountRules, selectedProducts);
   return checkoutCart;
 }
 

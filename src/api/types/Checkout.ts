@@ -18,6 +18,7 @@ export type CheckoutContext = {
 
 export type CheckoutProduct = Product & {
   discountedPrice?: number,
+  total?: number,
   quantity: number,
 }
 

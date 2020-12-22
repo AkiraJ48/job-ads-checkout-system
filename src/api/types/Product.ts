@@ -1,5 +1,5 @@
 import { ApiActions, ApiArgs } from "../Api";
-import { PricingRulesContext } from "./PricingRule";
+import { PricingRulesContext } from "./DiscountRule";
 
 export type LoadProductSelectionApiArgs = ApiArgs & {
   action: ApiActions.LOAD_JOB_ADS,

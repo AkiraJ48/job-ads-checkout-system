@@ -1,12 +1,12 @@
-import { PricingRulesContext } from '../types/PricingRule';
+import { PricingRulesContext } from '../types/DiscountRule';
 import loadPricingRules from './loadPricingRules';
 import buildJobAds from '../transformers/buildJobAds';
 
 async function loadJobAds(props: PricingRulesContext) {
   const products = (await import('../data/products.json')).default;
-  const pricingRules = await loadPricingRules(props);
+  const discountRules = await loadPricingRules(props);
   
-  const response = buildJobAds(products, pricingRules);
+  const response = buildJobAds(products, discountRules);
   return response;
 }
 

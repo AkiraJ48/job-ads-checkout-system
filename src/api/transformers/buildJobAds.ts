@@ -1,18 +1,18 @@
-import PricingRule from "../types/PricingRule";
+import DiscountRule, { DiscountRuleType } from "../types/DiscountRule";
 import Product from "../types/Product";
 
-function buildSpecialDealDescription(rule: PricingRule) {
-  if (rule.type === 'discount') {
+function buildSpecialDealDescription(rule: DiscountRule) {
+  if (rule.type === DiscountRuleType.DISCOUNT) {
     return `You get $${rule.discountAmount} off!`;
-  } else if (rule.type === 'xFORy') {
+  } else if (rule.type === DiscountRuleType.X_FOR_Y) {
     return `You can buy ${rule.x} for ${rule.y}!`;
   }
   return '';
 }
 
-function buildJobAds(products: Product[], pricingRules: PricingRule[]) {
+function buildJobAds(products: Product[], discountRules: DiscountRule[]) {
   return products.map(product => {
-    const rulesRelatedToProduct = pricingRules.find(rule => rule.products.includes(product.id));
+    const rulesRelatedToProduct = discountRules.find(rule => rule.products.includes(product.id));
     const specialDeal = rulesRelatedToProduct ? buildSpecialDealDescription(rulesRelatedToProduct) : '';
 
     return {

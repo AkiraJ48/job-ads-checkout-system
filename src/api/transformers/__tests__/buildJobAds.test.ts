@@ -1,3 +1,4 @@
+import { DiscountRuleType } from '../../types/DiscountRule';
 import buildJobAds from '../buildJobAds';
 
 describe('buildJobAds', () => {
@@ -11,16 +12,16 @@ describe('buildJobAds', () => {
       }
     ];
 
-    const pricingRules = [
+    const discountRules = [
       {
         id: '1',
-        type: 'discount',
+        type: DiscountRuleType.DISCOUNT,
         products: ['2'],
         discountAmount: 5,
       }
     ];
 
-    const jobAds = buildJobAds(ads, pricingRules);
+    const jobAds = buildJobAds(ads, discountRules);
 
     expect(jobAds).toEqual([
       {
@@ -44,16 +45,16 @@ describe('buildJobAds', () => {
       }
     ];
 
-    const pricingRules = [
+    const discountRules = [
       {
         id: '1',
-        type: 'discount',
+        type: DiscountRuleType.DISCOUNT,
         products: ['1'],
         discountAmount: 5,
       }
     ];
 
-    const jobAds = buildJobAds(ads, pricingRules);
+    const jobAds = buildJobAds(ads, discountRules);
 
     expect(jobAds).toEqual([
       {
@@ -83,23 +84,23 @@ describe('buildJobAds', () => {
       }
     ];
 
-    const pricingRules = [
+    const discountRules = [
       {
         id: '1',
-        type: 'discount',
+        type: DiscountRuleType.DISCOUNT,
         products: ['1'],
         discountAmount: 5,
       },
       {
         id: '2',
-        type: 'xFORy',
+        type: DiscountRuleType.X_FOR_Y,
         products: ['2'],
         x: 2,
         y: 3
       }
     ];
 
-    const jobAds = buildJobAds(ads, pricingRules);
+    const jobAds = buildJobAds(ads, discountRules);
 
     expect(jobAds).toEqual([
       {

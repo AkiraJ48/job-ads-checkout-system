@@ -1,8 +1,12 @@
-import PricingRule, { PricingRulesContext } from '../types/PricingRule';
+import DiscountRule, { DiscountRuleType, PricingRulesContext } from '../types/DiscountRule';
 
-async function loadPricingRules(props: PricingRulesContext): Promise<PricingRule[]> {
+type ApiDiscountRule = Omit<DiscountRule, "type"> & {
+  type: string,
+}
+
+async function loadPricingRules(props: PricingRulesContext): Promise<DiscountRule[]> {
   const { customerId } = props;
-  let response;
+  let response: ApiDiscountRule[];
   if (customerId === 'Myer') {
     response = (await import('../data/myer-pricing-rules.json')).default;
   } else if (customerId === 'Axil Coffee') {
@@ -12,7 +16,12 @@ async function loadPricingRules(props: PricingRulesContext): Promise<PricingRule
   } else {
     response = (await import('../data/default-pricing-rules.json')).default
   }
-  return response;
+  const rules: DiscountRule[] = response.map((rule) => ({
+    ...rule,
+    type: rule.type === 'discount' ? DiscountRuleType.DISCOUNT : DiscountRuleType.X_FOR_Y,
+  }))
+
+  return rules;
 }
 
 export default loadPricingRules;
